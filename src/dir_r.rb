@@ -6,12 +6,13 @@
 # Ian Link 6.10.12
 
 def dir_r(path, &block)
+  path.slice!(-1) if path.slice(-1) == "/"
   dir = Dir.new(path)
 
   dir.each do |x|
     if x != '.' and x != '..'
       if File.extname(x) == ''
-        new_path = path + "/" + x + "/"
+        new_path = path + "/" + x
         if File.directory?(new_path)
           dir_r(new_path, &block)
         end
