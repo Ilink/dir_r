@@ -16,7 +16,7 @@ def dir_r(path, &block)
           dir_r(new_path, &block)
         end
       else
-        yield x
+        yield x, path
       end
     end
   end
